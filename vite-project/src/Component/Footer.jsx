@@ -46,7 +46,7 @@ export default function Footer() {
 
         <chakra.p
           py={{ base: "2", sm: "0" }}
-          color="gray.800"
+          color="#212D28"
           _dark={{ color: "white" }}
         >
           All rights reserved
@@ -56,7 +56,7 @@ export default function Footer() {
           <chakra.a
             href="#"
             mx="2"
-            color="gray.600"
+            color="#212D28"
             _dark={{ color: "gray.300", _hover: { color: "gray.400" } }}
             _hover={{
               color: "gray.500",
@@ -71,7 +71,7 @@ export default function Footer() {
           <chakra.a
             href="#"
             mx="2"
-            color="gray.600"
+            color="#212D28"
             _dark={{ color: "gray.300", _hover: { color: "gray.400" } }}
             _hover={{
               color: "gray.500",
@@ -86,7 +86,7 @@ export default function Footer() {
           <chakra.a
             href="#"
             mx="2"
-            color="gray.600"
+            color="#212D28"
             _dark={{ color: "gray.300", _hover: { color: "gray.400" } }}
             _hover={{
               color: "gray.500",

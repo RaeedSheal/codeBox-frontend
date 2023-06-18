@@ -24,16 +24,19 @@ export default function NavBar(props) {
       setUser(true)
     }
   return (
-    <div>
+    <>
         <React.Fragment>
-      <chakra.header
+      <Box
         bg={bg}
         w="7xl"
         px={{ base: 2, sm: 4 }}
         py={4}
         shadow="md"
-       
-        
+        // bgColor='#dfc29f'
+        // bgColor='#d9c9a5'
+        // bgColor='#212d28'
+        // background= "rgb(217,201,165)"
+        background="linear-gradient(90deg, rgba(217,201,165,1) 24%, rgba(253,255,240,1) 85%)"
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <Flex>
@@ -45,7 +48,7 @@ export default function NavBar(props) {
             >
               {/* <logo></logo> */}
             
-              <VisuallyHidden>Choc</VisuallyHidden>
+          
             </chakra.a>
             {/* <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
               codeBox
@@ -72,8 +75,9 @@ export default function NavBar(props) {
               
               {/* <Button colorScheme='whiteAlpha' color="#8d622f">WhiteAlpha</Button> */}
             </HStack>
-
-            <Image src='https://i.pinimg.com/564x/ef/af/f2/efaff2736a4c6f826bc8ba7c1469b071.jpg' h="150px" w='150px' />
+            {/* <Image src='../public/logoBox2.png' h="100px" w='100px'></Image> */}
+            <Image src='../public/logoBox3.png' h={"70px"} ></Image>
+            {/* <Image src='https://i.pinimg.com/56"4x/ef/af/f2/efaff2736a4c6f826bc8ba7c1469b071.jpg' h="150px" w='150px' /> */}
             {/* <Button colorScheme="brand" size="sm">
               Get Started
             </Button> */}
@@ -89,7 +93,7 @@ export default function NavBar(props) {
                 onClick={mobileNav.onOpen}
               />
 
-              <VStack
+              {/* <VStack
                 pos="absolute"
                 top={0}
                 left={0}
@@ -124,12 +128,12 @@ export default function NavBar(props) {
                 <Button w="full" variant="ghost">
                   Sign in
                 </Button>
-              </VStack>
+              </VStack> */}
             </Box>
           </HStack>
         </Flex>
-      </chakra.header>
+      </Box>
     </React.Fragment>
-    </div>
+    </>
   )
 }

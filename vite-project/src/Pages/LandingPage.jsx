@@ -13,10 +13,13 @@ import {
 } from "@chakra-ui/react"
 import Footer from '../Component/Footer'
 import NavBar from '../Component/NavBar'
+
 export default function LandingPage() {
   return (
     <div>
       <NavBar></NavBar>
+ 
+
          <Flex
       align="center"
       justify={{ base: "center", md: "space-around", xl: "space-between" }}
@@ -24,8 +27,10 @@ export default function LandingPage() {
       wrap="no-wrap"
       minH="70vh"
       px={8}
-      mb={16}
-      mt={15}
+      // mb={16}
+      // mt={15}
+      bgColor='#fdfff0'
+    //  bgColor='#d9c9a5'
     //   {...rest}
     >
       <Stack
@@ -37,10 +42,10 @@ export default function LandingPage() {
           as="h1"
           size="xl"
           fontWeight="bold"
-          color="primary.800"
+          color="#8d622f"
           textAlign={["center", "center", "left", "left"]}
         >
-        <Text>React landing page with Chakra UI</Text>
+        <Text>codeBox game</Text>
         </Heading>
         <Heading
           as="h2"
@@ -51,7 +56,7 @@ export default function LandingPage() {
           lineHeight={1.5}
           textAlign={["center", "center", "left", "left"]}
         >
-         <Text>This is the subheader section where you describe the basic benefits of your product</Text>
+         <Text>Start improving your technology skills with codeBox game.</Text>
         </Heading>
         <Link to='/SignUp'>
           <Button
@@ -73,14 +78,15 @@ export default function LandingPage() {
           fontSize="xs"
           mt={2}
           textAlign="center"
-          color="primary.800"
+          color="#8d622f"
           opacity="0.6"
         >
-          No credit card required.
+          codeBox team.
         </Text>
       </Stack>
       <Box w={{ base: "80%", sm: "60%", md: "50%" }} mb={{ base: 12, md: 0 }}>
-        <Image src='https://i.pinimg.com/564x/ef/af/f2/efaff2736a4c6f826bc8ba7c1469b071.jpg' size="100%" rounded="1rem" shadow="2xl" />
+      <Image src='../public/Logo.png'></Image>
+        {/* <Image src='https://i.pinimg.com/564x/ef/af/f2/efaff2736a4c6f826bc8ba7c1469b071.jpg' size="100%" rounded="1rem" shadow="2xl" /> */}
       </Box>
     </Flex>
 <Footer></Footer>
@@ -88,19 +94,3 @@ export default function LandingPage() {
   )
 }
 
-// Hero.propTypes = {
-//   title: PropTypes.string,
-//   subtitle: PropTypes.string,
-//   image: PropTypes.string,
-//   ctaText: PropTypes.string,
-//   ctaLink: PropTypes.string,
-// }
-
-// Hero.defaultProps = {
-//   title: "React landing page with Chakra UI",
-//   subtitle:
-//     "This is the subheader section where you describe the basic benefits of your product",
-//   image: "<https://source.unsplash.com/collection/404339/800x600>",
-//   ctaText: "Create your account now",
-//   ctaLink: "/signup",
-// }
