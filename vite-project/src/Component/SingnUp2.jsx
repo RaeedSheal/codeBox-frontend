@@ -16,13 +16,19 @@ import {
   Text,
   Alert,
   AlertIcon,
+  Icon,
+  VStack,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { Link,useNavigate} from "react-router-dom";
 import Footer from '../Component/Footer'
 import NavBar2 from '../Component/NavBar2'
+import {BiUserPin} from "react-icons/bi";
+import { MdEmail } from "react-icons/md";
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
+const CBiUserPin = chakra(BiUserPin);
+const CMdEmail = chakra(MdEmail);
 export default function SingnUp2() {
     const [showPassword, setShowPassword] = useState(false)
     const [name, setName] = useState('')
@@ -37,22 +43,23 @@ export default function SingnUp2() {
   const [login, setLogin] = useState(localStorage.getItem("loged") === "true");
   const handleShowClick = () => setShowPassword(!showPassword)
   const Navigate = useNavigate()
-  function handleFormSubmit(e) {
-    e.preventDefault();
+  function handleFormSubmit() {
+    console.log('hello there!');
+   
 
     setNameError("");
     setEmailError("");
     setPasswordError("");
     setFlag(false);
 
-    let hasError = false;
+    let hasError = true;
 
     if (name.length < 3) {
       setNameError("Name should be at least 3 characters");
       hasError = true;
     }
     if (userName.length < 3) {
-      setUserNameError(" User Name should be at least 3 characters");
+      setUserNameError("Name should be at least 3 characters");
       hasError = true;
     }
 
@@ -60,38 +67,30 @@ export default function SingnUp2() {
       setEmailError("Email should be at least 4 characters");
       hasError = true;
     }
+   
+
+    if (email.length < 4) {
+      setEmailError("Email should be at least 4 characters");
+      hasError = false;
+    }
 
     if (password.length < 4) {
       setPasswordError("Password should be at least 4 characters");
-      hasError = true;
+      hasError = false;
     }
 
-    if (!hasError) {
+    if (hasError) {
       localStorage.setItem("sanskarEmail", JSON.stringify(email));
       localStorage.setItem("sanskarPassword", JSON.stringify(password));
       localStorage.setItem("loged", true);
       console.log("Saved in Local Storage");
       setLogin(true);
+      Navigate('/home')
     } else {
       setFlag(true);
-      Navigate('/Login')
-
     }
    
-  //   const Navigate = useNavigate()
-  //   const handleSubmit=()=> {
 
-  //     if(name.length<=2 || userName.length<=2 || email.length<=2||password<=4 ){
-  //     //   <Alert status='error'>
-  //     //   <AlertIcon />
-  //     //   There was an error processing your request
-  //     // </Alert>
-  //     alert('There was an error processing your request')
-  //     console.log("empty");
-  //   }else{
-  //     Navigate('/Login')
-  //   }
-  // }
 }
   return (
     <div>
@@ -104,8 +103,8 @@ export default function SingnUp2() {
       justifyContent="center"
       alignItems="center"
     >
-      <Stack
-        flexDir="column"
+      <VStack
+      spacing={4}
         mb="2"
         justifyContent="center"
         alignItems="center"
@@ -118,8 +117,7 @@ export default function SingnUp2() {
           </Text>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
-            <Stack
-              spacing={4}
+            <VStack
               p="1rem"
             bgColor='#fdfff0'
               boxShadow="md"
@@ -137,14 +135,20 @@ export default function SingnUp2() {
                 // background='#FFFEFE'
                 onChange={(e)=>setName(e.target.value)}
                   />
-                   {flag && <p className="text-danger">{nameError}</p>}
+                  
                 </InputGroup>
+                <Box>
+                {flag && <Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+                  <AlertIcon color='#f44336'  />
+                  {nameError}
+                </Alert >}
+                </Box>
               </FormControl>
                  <FormControl>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    children={<CFaUserAlt color="#8d622f" />}
+                    children={<CBiUserPin color="#8d622f" />}
                   />
                   <Input type="userName" placeholder="User Name" 
                   _placeholder={{ color: '#212D28' }}
@@ -152,14 +156,17 @@ export default function SingnUp2() {
                   isInvalid errorBorderColor='#D5C39B'
                   onChange={(e)=>setUserName(e.target.value)}
                   />
-                  {flag && <p className="text-danger">{userNameError}</p>}
                 </InputGroup>
+<Box>  {flag &&<Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+                  <AlertIcon color='#f44336'/>
+                  {userNameError}
+                </Alert >}</Box>
               </FormControl>
               <FormControl>
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    children={<CFaUserAlt color="#8d622f" />}
+                    children={<CMdEmail color="#8d622f" />}
                   />
                   <Input type="email" placeholder="email address" 
                    _placeholder={{ color: '#212D28' }}
@@ -167,8 +174,16 @@ export default function SingnUp2() {
                    isInvalid errorBorderColor='#D5C39B'
                    onChange={(e)=>setEmail(e.target.value)}
                    />
-                    {flag && <p className="text-danger">{emailError}</p>}
+                  
                 </InputGroup>
+                <Box>
+
+{flag && <Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+<AlertIcon color='#f44336'/>
+{emailError}
+</Alert >}
+
+</Box>
               </FormControl>
               <FormControl>
                 <InputGroup>
@@ -185,20 +200,34 @@ export default function SingnUp2() {
                     isInvalid errorBorderColor='#D5C39B'
                     onChange={(e)=>setPassword(e.target.value)}
                   />
-                   {flag && <p className="text-danger">{passwordError}</p>}
+                  
                   <InputRightElement width="4.5rem">
+                    
                     <Button h="1.75rem" size="sm"   color='#8d622f'   bgColor='#D5C39B'
                     _hover={{ bg: "#8d622f", color: " white" }}
                      onClick={handleShowClick}>
                       {showPassword ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
+                  
                 </InputGroup>
-                <FormHelperText textAlign="right" color="#212D28">
+               
+                {/* <FormHelperText textAlign="right" color="#212D28">
                   <Link>forgot password?</Link>
-                </FormHelperText>
+                </FormHelperText> */}
               </FormControl>
-              
+              <Box>
+                  
+                  {flag && <Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+                  <AlertIcon color='#f44336'/>
+                  {passwordError}
+                </Alert >
+                     
+                    }
+                    </Box>
+                    
+               
+                
               <Button
                 borderRadius={0}
                 variant="solid"
@@ -211,16 +240,16 @@ export default function SingnUp2() {
                 SignUp
               </Button>
               
-            </Stack>
-            {flag && (
+            </VStack>
+            {/* {flag && (
               <Alert status="error">
                 <AlertIcon />
                 Please fill in all the required fields.
               </Alert>
-            )}
+            )} */}
           </form>
         </Box>
-      </Stack>
+      </VStack>
       <Box color='#212D28'>
       Already a user?{" "}
         <Link  to='/Login' color="#212D28" href="#">
