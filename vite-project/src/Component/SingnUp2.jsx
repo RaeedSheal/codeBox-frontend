@@ -44,10 +44,11 @@ export default function SingnUp2() {
   const handleShowClick = () => setShowPassword(!showPassword)
   const Navigate = useNavigate()
   function handleFormSubmit() {
-    console.log('hello there!');
+    // console.log('hello there!');
    
 
     setNameError("");
+    userNameError("");
     setEmailError("");
     setPasswordError("");
     setFlag(false);
@@ -63,11 +64,6 @@ export default function SingnUp2() {
       hasError = true;
     }
 
-    if (email.length < 4) {
-      setEmailError("Email should be at least 4 characters");
-      hasError = true;
-    }
-   
 
     if (email.length < 4) {
       setEmailError("Email should be at least 4 characters");
@@ -85,7 +81,7 @@ export default function SingnUp2() {
       localStorage.setItem("loged", true);
       console.log("Saved in Local Storage");
       setLogin(true);
-      Navigate('/home')
+      Navigate('/Login')
     } else {
       setFlag(true);
     }

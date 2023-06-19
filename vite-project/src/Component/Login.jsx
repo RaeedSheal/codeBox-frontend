@@ -13,10 +13,12 @@ import {
   Avatar,
   FormControl,
   FormHelperText,
-  InputRightElement
+  InputRightElement,
+  Alert,
+  AlertIcon
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import Footer from '../Component/Footer'
 import NavBar2 from '../Component/NavBar2'
 
@@ -24,9 +26,47 @@ const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
-
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [flag, setFlag] = useState(false);
+    // const [login, setLogin] = useState(localStorage.getItem("loged") === "true");
     const handleShowClick = () => setShowPassword(!showPassword);
+    const Navigate = useNavigate()
+    function handleFormSubmit() {
+      // console.log('hello there!');
+     
   
+     
+      setEmailError("");
+      setPasswordError("");
+      setFlag(false);
+  
+      let hasError = true;
+      if (email.length < 4) {
+        setEmailError("Email should be at least 4 characters");
+        hasError = false;
+      }
+  
+      if (password.length < 4) {
+        setPasswordError("Password should be at least 4 characters");
+        hasError = false;
+      }
+  
+      if (hasError) {
+        localStorage.setItem("sanskarEmail", JSON.stringify(email));
+        localStorage.setItem("sanskarPassword", JSON.stringify(password));
+        localStorage.setItem("loged", true);
+        console.log("Saved in Local Storage");
+        // setLogin(true);
+        Navigate('/Home')
+      } else {
+        setFlag(true);
+      }
+     
+  
+  }
   return (
     <div>
         <NavBar2 SIGNUP='Sign up'></NavBar2>
@@ -67,8 +107,17 @@ export default function Login() {
                    _placeholder={{ color: '#212D28' }}
                    focusBorderColor='#8d622f'
                    isInvalid errorBorderColor='#D5C39B'
+                   onChange={(e)=>setEmail(e.target.value)}
                    />
                 </InputGroup>
+                <Box>
+
+{flag && <Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+<AlertIcon color='#f44336'/>
+{emailError}
+</Alert >}
+
+</Box>
               </FormControl>
               <FormControl>
                 <InputGroup>
@@ -83,6 +132,7 @@ export default function Login() {
                     _placeholder={{ color: '#212D28' }}
                     focusBorderColor='#8d622f'
                     isInvalid errorBorderColor='#D5C39B'
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm" color='#8d622f' bgColor='#D5C39B'
@@ -92,6 +142,15 @@ export default function Login() {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
+                <Box>
+                  
+                  {flag && <Alert bg='#fee8e7' border={"1px"} borderColor={"#f44336"} borderRadius={"8px"} my={1}>
+                  <AlertIcon color='#f44336'/>
+                  {passwordError}
+                </Alert >
+                     
+                    }
+                    </Box>
                 <FormHelperText textAlign="right">
                   <Link>forgot password?</Link>
                 </FormHelperText>
@@ -106,6 +165,7 @@ export default function Login() {
                 color='#8d622f'
                 width="full"
                 _hover={{ bg: "#8d622f", color: " white" }}
+                onClick={()=>{handleFormSubmit()}}
               >
                 Login
               </Button>
