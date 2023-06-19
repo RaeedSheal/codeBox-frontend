@@ -53,9 +53,9 @@ export default function BoxIdea() {
 <Center>
     <Box p={5} shadow='md' borderWidth='1px'>
 {/* <Textarea placeholder='Code' w='100' h='100' focusBorderColor='#D5C39B'></Textarea> */}
-<Heading>Idea Title </Heading>
-<Text>Idea content</Text>
-<Text>Hints</Text>
+<Heading color="#8d622f">Idea Title </Heading>
+<Text color="#8d622f">Idea content</Text>
+<Text color="#8d622f">Hints</Text>
 <Wrap spacing={4}> 
 <Button borderRadius={10}
          type="submit"
