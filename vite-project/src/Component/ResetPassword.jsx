@@ -1,4 +1,4 @@
-// import React from 'react'
+
 import { useState } from "react";
 import {
   Flex,
@@ -85,7 +85,6 @@ export default function ResetPassword() {
       flexDirection="column"
       width="100wh"
       height="100vh"
-      // backgroundColor="primary.800"
       bgColor='#fdfff0'
       justifyContent="center"
       alignItems="center"
@@ -95,7 +94,7 @@ export default function ResetPassword() {
         mb="2"
         justifyContent="center"
         alignItems="center"
-        // color='primary.800'
+      
       >
         
         <Heading color="#8d622f">Reset Password</Heading>
@@ -104,7 +103,6 @@ export default function ResetPassword() {
             <Stack
               spacing={4}
               p="1rem"
-              // backgroundColor="whiteAlpha.900"
               bgColor='#fdfff0'
               boxShadow="md"
             >
@@ -180,17 +178,12 @@ export default function ResetPassword() {
                      
                     }
                     </Box>
-                {/* <FormHelperText textAlign="right">
-                  <Link>forgot password?</Link>
-                </FormHelperText> */}
               </FormControl>
               <Button
                 borderRadius={0}
                 type="submit"
                 variant="solid"
-                // colorScheme="teal"
                 bgColor='#D5C39B'
-                // _hover={bgColor=""}
                 color='#8d622f'
                 width="full"
                 _hover={{ bg: "#8d622f", color: " white" }}
