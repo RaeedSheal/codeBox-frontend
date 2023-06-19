@@ -21,6 +21,7 @@ function App() {
 
       {/* Routers */}
       <Routes>
+        
       <Route path='/' element={<LandingPage2/>}></Route>
       <Route path='/Home' element={<Home/>}></Route>
       <Route path='/Box2' element={<Box2/>}></Route>

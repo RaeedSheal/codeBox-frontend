@@ -29,21 +29,70 @@ export default function SingnUp2() {
     const [userName, setUserName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const handleShowClick = () => setShowPassword(!showPassword)
-    const Navigate = useNavigate()
-    const handleSubmit=()=> {
+    const [nameError, setNameError] = useState("");
+    const [userNameError, setUserNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [flag, setFlag] = useState(false);
+  const [login, setLogin] = useState(localStorage.getItem("loged") === "true");
+  const handleShowClick = () => setShowPassword(!showPassword)
+  const Navigate = useNavigate()
+  function handleFormSubmit(e) {
+    e.preventDefault();
 
-      if(name.length<=2 || userName.length<=2 || email.length<=2||password<=4 ){
-      //   <Alert status='error'>
-      //   <AlertIcon />
-      //   There was an error processing your request
-      // </Alert>
-      alert('There was an error processing your request')
-      console.log("empty");
-    }else{
-      Navigate('/Login')
+    setNameError("");
+    setEmailError("");
+    setPasswordError("");
+    setFlag(false);
+
+    let hasError = false;
+
+    if (name.length < 3) {
+      setNameError("Name should be at least 3 characters");
+      hasError = true;
     }
-  }
+    if (userName.length < 3) {
+      setUserNameError(" User Name should be at least 3 characters");
+      hasError = true;
+    }
+
+    if (email.length < 4) {
+      setEmailError("Email should be at least 4 characters");
+      hasError = true;
+    }
+
+    if (password.length < 4) {
+      setPasswordError("Password should be at least 4 characters");
+      hasError = true;
+    }
+
+    if (!hasError) {
+      localStorage.setItem("sanskarEmail", JSON.stringify(email));
+      localStorage.setItem("sanskarPassword", JSON.stringify(password));
+      localStorage.setItem("loged", true);
+      console.log("Saved in Local Storage");
+      setLogin(true);
+    } else {
+      setFlag(true);
+      Navigate('/Login')
+
+    }
+   
+  //   const Navigate = useNavigate()
+  //   const handleSubmit=()=> {
+
+  //     if(name.length<=2 || userName.length<=2 || email.length<=2||password<=4 ){
+  //     //   <Alert status='error'>
+  //     //   <AlertIcon />
+  //     //   There was an error processing your request
+  //     // </Alert>
+  //     alert('There was an error processing your request')
+  //     console.log("empty");
+  //   }else{
+  //     Navigate('/Login')
+  //   }
+  // }
+}
   return (
     <div>
  <NavBar2 SIGNUP='Sign up'></NavBar2>
@@ -51,7 +100,6 @@ export default function SingnUp2() {
       flexDirection="column"
       width="100wh"
       height="100vh"
-    //   backgroundColor="primary.800"
     bgColor='#fdfff0'
       justifyContent="center"
       alignItems="center"
@@ -61,19 +109,18 @@ export default function SingnUp2() {
         mb="2"
         justifyContent="center"
         alignItems="center"
-        // color='primary.800'
+      
       >
-        {/* <Avatar bg="#D5C39B" /> */}
+        
         <Heading color="#8d622f"> Sign up</Heading>
         <Text fontSize={'lg'} color={'#D5C39B'}>
             to enjoy all of our cool features ✌️
           </Text>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <div>
+          <form>
             <Stack
               spacing={4}
               p="1rem"
-            //   backgroundColor="whiteAlpha.900"
             bgColor='#fdfff0'
               boxShadow="md"
             >
@@ -90,6 +137,7 @@ export default function SingnUp2() {
                 // background='#FFFEFE'
                 onChange={(e)=>setName(e.target.value)}
                   />
+                   {flag && <p className="text-danger">{nameError}</p>}
                 </InputGroup>
               </FormControl>
                  <FormControl>
@@ -104,6 +152,7 @@ export default function SingnUp2() {
                   isInvalid errorBorderColor='#D5C39B'
                   onChange={(e)=>setUserName(e.target.value)}
                   />
+                  {flag && <p className="text-danger">{userNameError}</p>}
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -118,6 +167,7 @@ export default function SingnUp2() {
                    isInvalid errorBorderColor='#D5C39B'
                    onChange={(e)=>setEmail(e.target.value)}
                    />
+                    {flag && <p className="text-danger">{emailError}</p>}
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -135,6 +185,7 @@ export default function SingnUp2() {
                     isInvalid errorBorderColor='#D5C39B'
                     onChange={(e)=>setPassword(e.target.value)}
                   />
+                   {flag && <p className="text-danger">{passwordError}</p>}
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm"   color='#8d622f'   bgColor='#D5C39B'
                     _hover={{ bg: "#8d622f", color: " white" }}
@@ -150,20 +201,24 @@ export default function SingnUp2() {
               
               <Button
                 borderRadius={0}
-                // type="submit"
                 variant="solid"
-                // colorScheme="teal"
                 bgColor='#D5C39B'
                 color='#8d622f'
                 width="full"
                 _hover={{ bg: "#8d622f", color: " white" }}
-                onClick={()=>{handleSubmit()}}
+                onClick={()=>{handleFormSubmit()}}
               >
                 SignUp
               </Button>
               
             </Stack>
-          </div>
+            {flag && (
+              <Alert status="error">
+                <AlertIcon />
+                Please fill in all the required fields.
+              </Alert>
+            )}
+          </form>
         </Box>
       </Stack>
       <Box color='#212D28'>
