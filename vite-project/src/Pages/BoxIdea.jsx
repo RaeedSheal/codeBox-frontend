@@ -65,6 +65,24 @@ export default function BoxIdea() {
      </Wrap>
 </Box>
 </Center>
+<Center>
+    <Box p={5} shadow='md' borderWidth='1px'>
+<Textarea placeholder='Code' w='100' h='100' focusBorderColor='#D5C39B'></Textarea>
+<Wrap spacing={4}> 
+<WrapItem>
+<Button borderRadius={10}
+         type="submit"
+         variant="solid"
+         bgColor='#D5C39B'
+         color='#8d622f'
+         size="sm" >Submit</Button>
+         </WrapItem>
+         <WrapItem>
+
+     </WrapItem>
+     </Wrap>
+</Box>
+</Center>
 {/* <Center >
 {
         submit != false ?
