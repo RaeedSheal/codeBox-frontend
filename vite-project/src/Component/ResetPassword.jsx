@@ -80,7 +80,7 @@ export default function ResetPassword() {
     }
   return (
     <>
- <NavBar2 SIGNUP='Sign up'></NavBar2>
+ <NavBar2></NavBar2>
          <Flex
       flexDirection="column"
       width="100wh"
