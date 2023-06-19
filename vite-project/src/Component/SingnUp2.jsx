@@ -13,18 +13,37 @@ import {
   FormControl,
   FormHelperText,
   InputRightElement,
-  Text
+  Text,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import Footer from '../Component/Footer'
 import NavBar2 from '../Component/NavBar2'
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 export default function SingnUp2() {
-    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false)
+    const [name, setName] = useState('')
+    const [userName, setUserName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const handleShowClick = () => setShowPassword(!showPassword)
+    const Navigate = useNavigate()
+    const handleSubmit=()=> {
 
-    const handleShowClick = () => setShowPassword(!showPassword);
+      if(name.length<=2 || userName.length<=2 || email.length<=2||password<=4 ){
+      //   <Alert status='error'>
+      //   <AlertIcon />
+      //   There was an error processing your request
+      // </Alert>
+      alert('There was an error processing your request')
+      console.log("empty");
+    }else{
+      Navigate('/Login')
+    }
+  }
   return (
     <div>
  <NavBar2 SIGNUP='Sign up'></NavBar2>
@@ -50,12 +69,12 @@ export default function SingnUp2() {
             to enjoy all of our cool features ✌️
           </Text>
         <Box minW={{ base: "90%", md: "468px" }}>
-          <form>
+          <div>
             <Stack
               spacing={4}
               p="1rem"
             //   backgroundColor="whiteAlpha.900"
-            bgColor='#E1E3D9'
+            bgColor='#fdfff0'
               boxShadow="md"
             >
                  <FormControl>
@@ -64,10 +83,12 @@ export default function SingnUp2() {
                     pointerEvents="none"
                     children={<CFaUserAlt color="#8d622f" />}
                   />
-                  <Input type="email" placeholder="Name" 
+                  <Input type="name" placeholder="Name" 
                   _placeholder={{ color: '#212D28' }}
-                  focusBorderColor='#D5C39B'
-                isInvalid errorBorderColor='#FFFEFE'
+                  focusBorderColor='#8d622f'
+                isInvalid errorBorderColor='#D5C39B'
+                // background='#FFFEFE'
+                onChange={(e)=>setName(e.target.value)}
                   />
                 </InputGroup>
               </FormControl>
@@ -77,10 +98,11 @@ export default function SingnUp2() {
                     pointerEvents="none"
                     children={<CFaUserAlt color="#8d622f" />}
                   />
-                  <Input type="email" placeholder="User Name" 
+                  <Input type="userName" placeholder="User Name" 
                   _placeholder={{ color: '#212D28' }}
-                  focusBorderColor='#D5C39B'
-                  isInvalid errorBorderColor='#FFFEFE'
+                  focusBorderColor='#8d622f'
+                  isInvalid errorBorderColor='#D5C39B'
+                  onChange={(e)=>setUserName(e.target.value)}
                   />
                 </InputGroup>
               </FormControl>
@@ -92,8 +114,9 @@ export default function SingnUp2() {
                   />
                   <Input type="email" placeholder="email address" 
                    _placeholder={{ color: '#212D28' }}
-                   focusBorderColor='#D5C39B'
-                   isInvalid errorBorderColor='#FFFEFE'
+                   focusBorderColor='#8d622f'
+                   isInvalid errorBorderColor='#D5C39B'
+                   onChange={(e)=>setEmail(e.target.value)}
                    />
                 </InputGroup>
               </FormControl>
@@ -108,11 +131,14 @@ export default function SingnUp2() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     _placeholder={{ color: '#212D28' }}
-                    focusBorderColor='#D5C39B'
-                    isInvalid errorBorderColor='#FFFEFE'
+                    focusBorderColor='#8d622f'
+                    isInvalid errorBorderColor='#D5C39B'
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                   <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm"   color='#8d622f'   bgColor='#D5C39B' onClick={handleShowClick}>
+                    <Button h="1.75rem" size="sm"   color='#8d622f'   bgColor='#D5C39B'
+                    _hover={{ bg: "#8d622f", color: " white" }}
+                     onClick={handleShowClick}>
                       {showPassword ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
@@ -121,25 +147,28 @@ export default function SingnUp2() {
                   <Link>forgot password?</Link>
                 </FormHelperText>
               </FormControl>
+              
               <Button
                 borderRadius={0}
-                type="submit"
+                // type="submit"
                 variant="solid"
                 // colorScheme="teal"
                 bgColor='#D5C39B'
-                // _hover={bgColor=""}
                 color='#8d622f'
                 width="full"
+                _hover={{ bg: "#8d622f", color: " white" }}
+                onClick={()=>{handleSubmit()}}
               >
                 SignUp
               </Button>
+              
             </Stack>
-          </form>
+          </div>
         </Box>
       </Stack>
       <Box color='#212D28'>
       Already a user?{" "}
-        <Link  to='/Login' color="teal.500" href="#">
+        <Link  to='/Login' color="#212D28" href="#">
         Login
         </Link>
       </Box>

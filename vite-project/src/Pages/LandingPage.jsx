@@ -58,7 +58,7 @@ export default function LandingPage() {
         >
          <Text>Start improving your technology skills with codeBox game.</Text>
         </Heading>
-        <Link to='/SignUp'>
+        <Link to='/SignUp2'>
           <Button
             // colorScheme="primary"
             borderRadius="8px"

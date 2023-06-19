@@ -54,7 +54,7 @@ export default function Login() {
               spacing={4}
               p="1rem"
               // backgroundColor="whiteAlpha.900"
-              bgColor='#E1E3D9'
+              bgColor='#fdfff0'
               boxShadow="md"
             >
               <FormControl>
@@ -65,8 +65,8 @@ export default function Login() {
                   />
                   <Input type="email" placeholder="email address" 
                    _placeholder={{ color: '#212D28' }}
-                   focusBorderColor='#D5C39B'
-                   isInvalid errorBorderColor='#FFFEFE'
+                   focusBorderColor='#8d622f'
+                   isInvalid errorBorderColor='#D5C39B'
                    />
                 </InputGroup>
               </FormControl>
@@ -81,11 +81,13 @@ export default function Login() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     _placeholder={{ color: '#212D28' }}
-                    focusBorderColor='#D5C39B'
-                    isInvalid errorBorderColor='#FFFEFE'
+                    focusBorderColor='#8d622f'
+                    isInvalid errorBorderColor='#D5C39B'
                   />
                   <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" color='#8d622f' bgColor='#D5C39B' onClick={handleShowClick}>
+                    <Button h="1.75rem" size="sm" color='#8d622f' bgColor='#D5C39B'
+                    _hover={{ bg: "#8d622f", color: " white" }}
+                     onClick={handleShowClick}>
                       {showPassword ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
@@ -103,6 +105,7 @@ export default function Login() {
                 // _hover={bgColor=""}
                 color='#8d622f'
                 width="full"
+                _hover={{ bg: "#8d622f", color: " white" }}
               >
                 Login
               </Button>

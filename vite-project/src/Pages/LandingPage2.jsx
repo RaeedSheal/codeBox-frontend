@@ -58,7 +58,7 @@ align={["center", "center", "flex-start", "flex-start"]}
 >
  <Text>Start improving your technology skills with codeBox game.</Text>
 </Heading>
-<Link to='/SignUp'>
+<Link to='/SignUp2'>
   <Button
     // colorScheme="primary"
     borderRadius="8px"
