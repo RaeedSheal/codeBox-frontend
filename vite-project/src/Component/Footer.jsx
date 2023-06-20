@@ -49,7 +49,7 @@ export default function Footer() {
           color="#212D28"
           _dark={{ color: "white" }}
         >
-          All rights reserved
+         © 2023 GitHub codeBox. All rights reserved
         </chakra.p>
 
         <Flex mx="-2">
