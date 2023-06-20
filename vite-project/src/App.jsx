@@ -11,6 +11,7 @@ import LoginAdmin from './Component/LoginAdmin';
 import GitHubLink from './Component/gitHubLink';
 import EditIdea from './Component/EditIdea';
 import ViewIdeas from './Component/ViewIdeas';
+import ViewUsers from './Component/ViewUsers';
 function App() {
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/CreateIdea' element={<CreateIdea/>}></Route>
         <Route path='/EditIdea' element={<EditIdea/>}></Route>
         <Route path='/ViewIdeas' element={<ViewIdeas/>}></Route>
+        <Route path='/ViewUsers' element={<ViewUsers/>}></Route>
         <Route path='/gitHubLink' element={<GitHubLink/>}></Route>
       </Routes>
     </>

@@ -1,5 +1,5 @@
 import {
-    Flex,
+  
     Heading,
     Button,
     Box,
@@ -9,11 +9,7 @@ import {
     Card,
     CardBody,
     Text,
-    Grid,
-    Wrap,
-    GridItem,
     Center,
-    HStack,
     CardFooter
   } from "@chakra-ui/react";
   import { Link} from "react-router-dom";
@@ -88,6 +84,7 @@ export default function ViewIdeas() {
     </Stack>
   </CardBody>
   <CardFooter bgColor='#fdfff0' gap={'10px'}>
+    <Link to='/EditIdea'>
   <Button  
   borderRadius={10}
    type="submit"
@@ -97,7 +94,9 @@ export default function ViewIdeas() {
     w={"full"}
     _hover={{ bg: "#8d622f", color: " white" }}
    
->Edit </Button> <br/>
+>Edit </Button> 
+</Link>
+<br/>
   <Button       borderRadius={10}
    type="submit"
     variant="solid"
@@ -164,6 +163,7 @@ export default function ViewIdeas() {
     </Stack>
   </CardBody>
   <CardFooter bgColor='#fdfff0' gap={'10px'}>
+    <Link to='/EditIdea'>
   <Button      borderRadius={10}
    type="submit"
     variant="solid"
@@ -171,7 +171,9 @@ export default function ViewIdeas() {
     color="#8d622f"
     w={"full"}
     _hover={{ bg: "#8d622f", color: " white" }}
->Edit </Button> <br/>
+>Edit </Button>
+</Link>
+ <br/>
   <Button      borderRadius={10}
    type="submit"
     variant="solid"
