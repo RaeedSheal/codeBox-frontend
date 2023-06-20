@@ -26,17 +26,26 @@ export default function BoxIdea() {
     const [solution, setSolution] = useState(`def solution(a):
        return(a)`);
     // --- Urls
-    // const url = "http://localhost:8000/api/randomIdea";
-    // const submiturl = `http://localhost:8000/api/submitcode/${ideaId}`;
-    const url = "https://codebox-0856.onrender.com/api/randomIdea";
-    const submiturl = `https://codebox-0856.onrender.com/api/submitcode/${ideaId}`;
+    const url = "http://localhost:8000/api/randomIdea";
+    const submiturl = `http://localhost:8000/api/submitcode/${ideaId}`;
+    // const url = "https://codebox-0856.onrender.com/api/randomIdea";
+    // const submiturl = `https://codebox-0856.onrender.com/api/submitcode/${ideaId}`;
     // --- Urls
     useEffect(() => {
-        axios.get(url, { withCredentials: true }).then((res) => {
-            setName(res.data.idea.name);
-            setInstructions(res.data.idea.instructions);
-            setIdeaId(res.data.idea._id);
-        });
+        axios
+            .get(url, { withCredentials: true })
+            .then((res) => {
+                if (res.data.error) {
+                    console.log(res.data.error);
+                } else {
+                    setName(res.data.idea.name);
+                    setInstructions(res.data.idea.instructions);
+                    setIdeaId(res.data.idea._id);
+                }
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }, []);
     const submitAnswer = () => {
         axios.post(submiturl, { code: solution }).then((res) => {
