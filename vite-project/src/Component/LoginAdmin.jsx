@@ -171,7 +171,6 @@ export default function LoginAdmin() {
           </form>
         </Box>
       </Stack>
-    
     </Flex>
     <Footer></Footer>
     </>
