@@ -9,7 +9,6 @@ import {
   InputLeftElement,
   chakra,
   Box,
-  Avatar,
   FormControl,
   FormHelperText,
   InputRightElement,
