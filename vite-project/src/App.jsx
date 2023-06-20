@@ -1,4 +1,3 @@
-
 import './App.css'
 import { Route,Routes} from "react-router-dom";
 import Login from './Component/Login';
@@ -32,6 +31,7 @@ function App() {
       </Routes>
     </>
   )
+
 }
 
-export default App
+export default App;
