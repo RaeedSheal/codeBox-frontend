@@ -152,7 +152,7 @@ export default function Login() {
                     }
                     </Box>
                 <FormHelperText textAlign="right">
-                  <Link>forgot password?</Link>
+                  <Link to='/ResetPassword'>forgot password?</Link>
                 </FormHelperText>
               </FormControl>
               <Button
