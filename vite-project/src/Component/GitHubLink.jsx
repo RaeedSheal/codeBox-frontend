@@ -3,6 +3,7 @@ import Footer from './Footer'
 import NavBar2 from './NavBar2'
 import { Flex,Heading,Button,ButtonGroup} from '@chakra-ui/react'
 import { Link} from "react-router-dom";
+import { AiFillGithub } from "react-icons/ai";
 export default function GitHubLink() {
   return (
     <>
@@ -15,10 +16,11 @@ export default function GitHubLink() {
       justifyContent="center"
       alignItems="center"
     >
-
+<AiFillGithub  size='50px' color="#8d622f"/>
 <Heading color="#8d622f" py='10px'>GitHub codeBox team:</Heading>
 <ButtonGroup gap='4'>
 <Link to='https://github.com/Reema600'> <Button
+rightIcon={<AiFillGithub />}
                 borderRadius='50px'
                 type="submit"
                 variant="solid"
@@ -31,6 +33,7 @@ export default function GitHubLink() {
               </Button></Link>
 
 <Link to='https://github.com/RaeedSheal'><Button
+rightIcon={<AiFillGithub />}
                 borderRadius='50px'
                 type="submit"
                 variant="solid"
