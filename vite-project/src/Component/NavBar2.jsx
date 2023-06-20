@@ -1,4 +1,4 @@
-import { useRef,useState } from "react";
+import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Component/NavBar.css";
 // import { useNavigate } from 'react-router-dom'
