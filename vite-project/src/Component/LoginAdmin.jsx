@@ -171,12 +171,7 @@ export default function LoginAdmin() {
           </form>
         </Box>
       </Stack>
-      <Box  color='#212D28'>
-        New to us?{" "}
-        <Link  to='/SignUp2' color="teal.500" href="#">
-          Sign Up
-        </Link>
-      </Box>
+    
     </Flex>
     <Footer></Footer>
     </>
