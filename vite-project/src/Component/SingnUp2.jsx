@@ -44,7 +44,9 @@ export default function SingnUp2() {
     );
     const handleShowClick = () => setShowPassword(!showPassword);
     const Navigate = useNavigate();
-    const url = "https://codebox-0856.onrender.com/api/createuser";
+    // const url = "https://codebox-0856.onrender.com/api/createuser";
+    const url = "http://localhost:8000/api/createuser";
+
     function handleFormSubmit() {
         setNameError("");
         setUserNameError("");
