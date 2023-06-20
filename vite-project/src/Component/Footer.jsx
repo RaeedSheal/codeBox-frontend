@@ -84,7 +84,7 @@ export default function Footer() {
           </chakra.a> */}
 
           <chakra.a
-            href="#"
+            href="/gitHubLink"
             mx="2"
             color="#212D28"
             _dark={{ color: "gray.300", _hover: { color: "gray.400" } }}
