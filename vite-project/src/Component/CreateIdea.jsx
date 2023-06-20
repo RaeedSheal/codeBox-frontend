@@ -12,6 +12,7 @@ import {
 
   
   } from "@chakra-ui/react";
+  import { useState } from "react";
 //   import { Link} from "react-router-dom";
 import { FcIdea } from "react-icons/fc";
 import { BiRename } from "react-icons/bi";
@@ -22,6 +23,13 @@ import { TbSquareLetterA,TbSquareLetterB } from "react-icons/tb";
   
 
 export default function CreateIdea() {
+
+  const [ideaname, setIdeaname] = useState("");
+  const [ instructions, setInstructions] = useState("");
+  const [inputA, setInputA] = useState("");
+  const [inputB, setInputB] = useState("");
+  const [outputA, setOutputA] = useState("");
+  const [outputB, setOutputB] = useState("");
   return (
     <>
  <NavBar2></NavBar2>
@@ -62,7 +70,7 @@ export default function CreateIdea() {
                    _placeholder={{ color: '#212D28' }}
                    focusBorderColor='#8d622f'
                    isInvalid errorBorderColor='#D5C39B'
-                //    onChange={(e)=>setEmail(e.target.value)}
+                   onChange={(e)=>setIdeaname(e.target.value)}
                    />
                
                </InputGroup>
@@ -77,7 +85,7 @@ export default function CreateIdea() {
                  _placeholder={{ color: '#212D28' }}
                  focusBorderColor='#8d622f'
                  isInvalid errorBorderColor='#D5C39B'
-              //    onChange={(e)=>setEmail(e.target.value)}
+                 onChange={(e)=>setInstructions(e.target.value)}
                  />
              
              </InputGroup>
@@ -92,7 +100,7 @@ export default function CreateIdea() {
                  _placeholder={{ color: '#212D28' }}
                  focusBorderColor='#8d622f'
                  isInvalid errorBorderColor='#D5C39B'
-              //    onChange={(e)=>setEmail(e.target.value)}
+                 onChange={(e)=>setInputA(e.target.value)}
                  />
                  </InputGroup>
             </FormControl>
@@ -106,7 +114,7 @@ export default function CreateIdea() {
                  _placeholder={{ color: '#212D28' }}
                  focusBorderColor='#8d622f'
                  isInvalid errorBorderColor='#D5C39B'
-              //    onChange={(e)=>setEmail(e.target.value)}
+                 onChange={(e)=>setInputB(e.target.value)}
                  />
                  </InputGroup>
             </FormControl>
@@ -120,7 +128,7 @@ export default function CreateIdea() {
                  _placeholder={{ color: '#212D28' }}
                  focusBorderColor='#8d622f'
                  isInvalid errorBorderColor='#D5C39B'
-              //    onChange={(e)=>setEmail(e.target.value)}
+                 onChange={(e)=>setOutputA(e.target.value)}
                  />
                  </InputGroup>
             </FormControl>
@@ -134,7 +142,7 @@ export default function CreateIdea() {
                  _placeholder={{ color: '#212D28' }}
                  focusBorderColor='#8d622f'
                  isInvalid errorBorderColor='#D5C39B'
-              //    onChange={(e)=>setEmail(e.target.value)}
+                 onChange={(e)=>setOutputB(e.target.value)}
                  />
                  </InputGroup>
             </FormControl>
@@ -146,9 +154,9 @@ export default function CreateIdea() {
                 color='#8d622f'
                 width="full"
                 _hover={{ bg: "#8d622f", color: " white" }}
-                // onClick={()=>{handleFormSubmit()}}
+                // onClick={()=>{()}}
               >
-                Submit
+                Create
               </Button>
             </Stack>
           </form>

@@ -9,6 +9,7 @@ import ResetPassword from './Component/ResetPassword';
 import CreateIdea from './Component/CreateIdea';
 import LoginAdmin from './Component/LoginAdmin';
 import GitHubLink from './Component/gitHubLink';
+import EditIdea from './Component/EditIdea';
 function App() {
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/ResetPassword' element={<ResetPassword/>}></Route>
         <Route path='/LoginAdmin' element={<LoginAdmin/>}></Route>
         <Route path='/CreateIdea' element={<CreateIdea/>}></Route>
+        <Route path='/EditIdea' element={<EditIdea/>}></Route>
         <Route path='/gitHubLink' element={<GitHubLink/>}></Route>
       </Routes>
     </>
