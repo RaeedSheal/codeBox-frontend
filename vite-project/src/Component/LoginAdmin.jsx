@@ -67,7 +67,7 @@ export default function LoginAdmin() {
                 )
                 .then((res) => {
                     console.log(res);
-                    Navigate("/Home");
+                    Navigate("/ViewIdeas");
                 })
                 .catch((e) => {
                     setAuthError("Information are incorrect");
