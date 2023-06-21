@@ -26,6 +26,8 @@ export default function BoxIdea() {
     const [submit, setsubmit] = React.useState(true);
     const [name, setName] = useState("");
     const [instructions, setInstructions] = useState("");
+    const [hint, setHint] = useState("");
+
     const [ideaId, setIdeaId] = useState("");
     const [flag, setFlag] = useState(false);
 
@@ -48,6 +50,7 @@ export default function BoxIdea() {
                     setName(res.data.idea.name);
                     setInstructions(res.data.idea.instructions);
                     setIdeaId(res.data.idea._id);
+                    setHint(res.data.idea.hint);
                 }
             })
             .catch((e) => {
@@ -87,7 +90,7 @@ export default function BoxIdea() {
                 </Box>
                 <Box m={5}>
                     {/* code instructions start */}
-                    <Box p={5} shadow="md">
+                    <Box p={5} shadow="md" mt={4}>
                         <Flex mb={2}>
                             <FcIdea bg="#D5C39B" size="40px" />
                             <Heading ml={2} color="#8d622f">
@@ -115,24 +118,13 @@ export default function BoxIdea() {
                                     </AccordionButton>
                                 </h2>
                                 <AccordionPanel color="#8d622f" pb={4}>
-                                    Hint
+                                    {hint}
                                 </AccordionPanel>
                             </AccordionItem>
                         </Accordion>
 
                         {/* <Text color="#8d622f">Hints</Text> */}
                         <Flex justifyContent={"flex-end"} gap={2}>
-                            <Button
-                                borderRadius={10}
-                                variant="solid"
-                                bgColor="#D5C39B"
-                                color="#8d622f"
-                                size="sm"
-                                _hover={{ bg: "#8d622f", color: " white" }}
-                            >
-                                Submit
-                            </Button>
-
                             <Button
                                 borderRadius={10}
                                 type="submit"

@@ -93,6 +93,18 @@ const Cardidea = (props) => {
                                 {props.OutputB}.
                             </Text>
                         </Box>
+                        <Box>
+                            <Heading
+                                size="xs"
+                                textTransform="uppercase"
+                                color="#8d622f"
+                            >
+                                Hint
+                            </Heading>
+                            <Text pt="2" fontSize="sm" color="#D5C39B">
+                                {props.Hint}.
+                            </Text>
+                        </Box>
                     </Stack>
                 </CardBody>
                 <CardFooter bgColor="#fdfff0" gap={"10px"}>

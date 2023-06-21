@@ -27,6 +27,8 @@ export default function EditIdea() {
     const [inputB, setInputB] = useState("");
     const [outputA, setOutputA] = useState("");
     const [outputB, setOutputB] = useState("");
+    const [hint, setHint] = useState("");
+
     let { id } = useParams();
     const navigate = useNavigate();
     useEffect(() => {
@@ -43,6 +45,7 @@ export default function EditIdea() {
                     setInputB(res.data.idea.inputB);
                     setOutputA(res.data.idea.outputA);
                     setOutputB(res.data.idea.outputB);
+                    setHint(res.data.idea.hint);
                 }
             })
             .catch((e) => {
@@ -60,6 +63,7 @@ export default function EditIdea() {
                     inputB: inputB,
                     outputA: outputA,
                     outputB: outputB,
+                    hint: hint,
                 },
                 {
                     withCredentials: true,
@@ -226,6 +230,28 @@ export default function EditIdea() {
                                             setOutputB(e.target.value)
                                         }
                                         value={outputB}
+                                    />
+                                </InputGroup>
+                            </FormControl>
+                            <FormControl>
+                                <InputGroup>
+                                    <InputLeftElement
+                                        pointerEvents="none"
+                                        children={
+                                            <TbSquareLetterB color="#8d622f" />
+                                        }
+                                    />
+                                    <Input
+                                        type="text"
+                                        placeholder="Hint"
+                                        _placeholder={{ color: "#212D28" }}
+                                        focusBorderColor="#8d622f"
+                                        isInvalid
+                                        errorBorderColor="#D5C39B"
+                                        onChange={(e) =>
+                                            setHint(e.target.value)
+                                        }
+                                        value={hint}
                                     />
                                 </InputGroup>
                             </FormControl>

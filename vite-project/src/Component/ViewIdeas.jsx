@@ -34,6 +34,7 @@ export default function ViewIdeas() {
                         gap={4}
                         templateColumns={{ base: "1fr", md: "repeat(4,1fr)" }}
                         m={4}
+                        justifyContent={"center"}
                     >
                         {ideas.map((idea) => {
                             return (
@@ -46,6 +47,7 @@ export default function ViewIdeas() {
                                     InputB={idea.inputB}
                                     OutputA={idea.outputA}
                                     OutputB={idea.outputB}
+                                    Hint={idea.hint}
                                 />
                             );
                         })}
