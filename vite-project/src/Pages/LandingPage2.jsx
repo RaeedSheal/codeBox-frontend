@@ -74,6 +74,7 @@ export default function LandingPage2() {
                             bgColor="#D5C39B"
                             color="#8d622f"
                             width="full"
+                            _hover={{ bg: "#8d622f", color: " white" }}
                         >
                             Sign up
                         </Button>
