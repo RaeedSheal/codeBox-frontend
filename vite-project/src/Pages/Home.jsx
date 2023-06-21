@@ -26,7 +26,7 @@ export default function Home() {
     return (
         <>
             <NavBar2></NavBar2>
-            <Flex bgColor="#fdfff0">
+            <Flex h={"80vh"} bgColor="#fdfff0">
                 <Center>
                     <Image
                         src="../public/Box22.png "
@@ -48,6 +48,7 @@ export default function Home() {
                             color="#8d622f"
                             size="sm"
                             onClick={Show}
+                            _hover={{ bg: "#8d622f", color: " white" }}
                         >
                             Show Idea
                         </Button>

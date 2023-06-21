@@ -68,6 +68,7 @@ export default function BoxIdea() {
             <Grid
                 templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
                 bgColor="#fdfff0"
+                h={"80vh"}
             >
                 {/* code writing area */}
                 <Box>
@@ -84,8 +85,10 @@ export default function BoxIdea() {
                     <Box p={5} shadow="md" borderWidth="1px">
                         <Textarea
                             placeholder="Code"
-                            w="100"
-                            h="100"
+                            w="300"
+                            h="300"
+                            cols={55}
+                            rows={100}
                             focusBorderColor="#D5C39B"
                             defaultValue="def solution(a): return(a)"
                             onChange={(e) => {
@@ -103,6 +106,7 @@ export default function BoxIdea() {
                                     bgColor="#D5C39B"
                                     color="#8d622f"
                                     size="sm"
+                                    _hover={{ bg: "#8d622f", color: " white" }}
                                 >
                                     Submit
                                 </Button>
@@ -114,7 +118,13 @@ export default function BoxIdea() {
 
                 {/* code instructions */}
                 <Center>
-                    <Box p={5} shadow="md" borderWidth="1px">
+                    <Box
+                        p={5}
+                        shadow="md"
+                        borderWidth="1px"
+                        width="300"
+                        height="380"
+                    >
                         <Heading color="#8d622f">{name} </Heading>
                         <Text color="#8d622f">{instructions}</Text>
                         {/* <Text color="#8d622f">Hints</Text> */}
@@ -125,6 +135,7 @@ export default function BoxIdea() {
                                 bgColor="#D5C39B"
                                 color="#8d622f"
                                 size="sm"
+                                _hover={{ bg: "#8d622f", color: " white" }}
                             >
                                 Submit
                             </Button>
@@ -138,6 +149,10 @@ export default function BoxIdea() {
                                         color="#8d622f"
                                         size="sm"
                                         onClick={hide}
+                                        _hover={{
+                                            bg: "#8d622f",
+                                            color: " white",
+                                        }}
                                     >
                                         Close
                                     </Button>
@@ -150,6 +165,10 @@ export default function BoxIdea() {
                                         color="#8d622f"
                                         size="sm"
                                         onClick={Show}
+                                        _hover={{
+                                            bg: "#8d622f",
+                                            color: " white",
+                                        }}
                                     >
                                         Show Idea
                                     </Button>
