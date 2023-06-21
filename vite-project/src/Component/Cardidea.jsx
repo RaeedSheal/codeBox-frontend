@@ -96,7 +96,7 @@ const Cardidea = (props) => {
                     </Stack>
                 </CardBody>
                 <CardFooter bgColor="#fdfff0" gap={"10px"}>
-                    <Link to="/EditIdea">
+                    <Link to={`/EditIdea/${props.id}`}>
                         <Button
                             borderRadius={10}
                             type="submit"

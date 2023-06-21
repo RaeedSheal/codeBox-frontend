@@ -12,8 +12,8 @@ export default function ViewIdeas() {
     const url = "http://localhost:8000/api/ideas";
     useEffect(() => {
         axios.get(url, { withCredentials: true }).then((res) => {
-            setIdeas(res.data.ideas);
-            console.log(res.data.ideas);
+            if (res.data.error) return;
+            else setIdeas(res.data.ideas);
         });
     }, []);
     return (
