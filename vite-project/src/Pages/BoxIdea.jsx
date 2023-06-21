@@ -2,25 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbarlogged from "../Component/Navbarlogged";
 import {
     Image,
     Center,
     Button,
     Textarea,
     Box,
-    Wrap,
-    WrapItem,
     Grid,
     Text,
     Heading,
+    Flex,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionIcon,
+    AccordionPanel,
 } from "@chakra-ui/react";
+import { FcIdea } from "react-icons/fc";
+import { AiFillCheckCircle } from "react-icons/ai";
 import axios from "axios";
 export default function BoxIdea() {
     const [submit, setsubmit] = React.useState(true);
     const [name, setName] = useState("");
     const [instructions, setInstructions] = useState("");
     const [ideaId, setIdeaId] = useState("");
+    const [flag, setFlag] = useState(false);
 
     const [result, setResult] = useState("");
     const [solution, setSolution] = useState(`def solution(a):
@@ -51,52 +58,129 @@ export default function BoxIdea() {
         axios.post(submiturl, { code: solution }).then((res) => {
             setResult(res.data.results);
         });
+        setFlag(true);
     };
     const navigate = useNavigate();
     const hide = () => {
         navigate("/home");
         setsubmit("");
     };
-    const Show = () => {
-        console.log("user LogOut");
-        navigate("/Box2");
-        setsubmit(true);
-    };
+
     return (
         <>
-            <NavBar2></NavBar2>
+            {/* Nav */}
+            <Navbarlogged></Navbarlogged>
+            {/*  */}
             <Grid
-                templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+                templateColumns={{ base: "1fr", md: "3fr 5fr" }}
                 bgColor="#fdfff0"
                 h={"80vh"}
             >
-                {/* code writing area */}
                 <Box>
                     <Center>
                         <Image
                             src="../public/Box1.png "
                             alt="Box"
-                            width="300"
-                            height="500"
+                            height="700"
                         ></Image>
                     </Center>
                 </Box>
-                <Center>
+                <Box m={5}>
+                    {/* code instructions start */}
+                    <Box p={5} shadow="md">
+                        <Flex mb={2}>
+                            <FcIdea bg="#D5C39B" size="40px" />
+                            <Heading ml={2} color="#8d622f">
+                                {" "}
+                                {name}{" "}
+                            </Heading>
+                        </Flex>
+                        <Text color="#8d622f" mb={2}>
+                            {instructions}
+                        </Text>
+                        {/* Hint */}
+                        <Accordion my={2} allowToggle>
+                            <AccordionItem>
+                                <h2>
+                                    <AccordionButton>
+                                        <Box
+                                            color="#8d622f"
+                                            as="span"
+                                            flex="1"
+                                            textAlign="left"
+                                        >
+                                            Hint
+                                        </Box>
+                                        <AccordionIcon />
+                                    </AccordionButton>
+                                </h2>
+                                <AccordionPanel color="#8d622f" pb={4}>
+                                    Hint
+                                </AccordionPanel>
+                            </AccordionItem>
+                        </Accordion>
+
+                        {/* <Text color="#8d622f">Hints</Text> */}
+                        <Flex justifyContent={"flex-end"} gap={2}>
+                            <Button
+                                borderRadius={10}
+                                variant="solid"
+                                bgColor="#D5C39B"
+                                color="#8d622f"
+                                size="sm"
+                                _hover={{ bg: "#8d622f", color: " white" }}
+                            >
+                                Submit
+                            </Button>
+
+                            <Button
+                                borderRadius={10}
+                                type="submit"
+                                variant="solid"
+                                bgColor="#D5C39B"
+                                color="#8d622f"
+                                size="sm"
+                                onClick={hide}
+                                _hover={{
+                                    bg: "#8d622f",
+                                    color: " white",
+                                }}
+                            >
+                                Close
+                            </Button>
+                        </Flex>
+                    </Box>
+                    {/* code instructions end */}
+
+                    {/* code writing area start */}
                     <Box p={5} shadow="md" borderWidth="1px">
+                        <Heading color="#8d622f" mb={2}>
+                            Write your code and enjoy !{" "}
+                        </Heading>
                         <Textarea
                             placeholder="Code"
-                            w="300"
                             h="300"
-                            cols={55}
-                            rows={100}
+                            resize={"none"}
                             focusBorderColor="#D5C39B"
                             defaultValue="def solution(a): return(a)"
                             onChange={(e) => {
                                 setSolution(e.target.value);
                             }}
                         ></Textarea>
-                        <Wrap spacing={4}>
-                            <WrapItem>
+                        <Flex justifyContent={"space-between"} mt={3}>
+                            <Box>
+                                {flag && (
+                                    <Flex>
+                                        <AiFillCheckCircle
+                                            size={"25px"}
+                                            color="green"
+                                        />
+                                        <Box ml={2}>{result} out of 2</Box>{" "}
+                                    </Flex>
+                                )}
+                            </Box>
+
+                            <Box>
                                 <Button
                                     borderRadius={10}
                                     onClick={() => {
@@ -110,94 +194,11 @@ export default function BoxIdea() {
                                 >
                                     Submit
                                 </Button>
-                                <Text>{result}</Text>
-                            </WrapItem>
-                        </Wrap>
+                            </Box>
+                        </Flex>
                     </Box>
-                </Center>
-
-                {/* code instructions */}
-                <Center>
-                    <Box
-                        p={5}
-                        shadow="md"
-                        borderWidth="1px"
-                        width="300"
-                        height="380"
-                    >
-                        <Heading color="#8d622f">{name} </Heading>
-                        <Text color="#8d622f">{instructions}</Text>
-                        {/* <Text color="#8d622f">Hints</Text> */}
-                        <Wrap spacing={4}>
-                            <Button
-                                borderRadius={10}
-                                variant="solid"
-                                bgColor="#D5C39B"
-                                color="#8d622f"
-                                size="sm"
-                                _hover={{ bg: "#8d622f", color: " white" }}
-                            >
-                                Submit
-                            </Button>
-                            <WrapItem>
-                                {submit != false ? (
-                                    <Button
-                                        borderRadius={10}
-                                        type="submit"
-                                        variant="solid"
-                                        bgColor="#D5C39B"
-                                        color="#8d622f"
-                                        size="sm"
-                                        onClick={hide}
-                                        _hover={{
-                                            bg: "#8d622f",
-                                            color: " white",
-                                        }}
-                                    >
-                                        Close
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        borderRadius={10}
-                                        type="submit"
-                                        variant="solid"
-                                        bgColor="#D5C39B"
-                                        color="#8d622f"
-                                        size="sm"
-                                        onClick={Show}
-                                        _hover={{
-                                            bg: "#8d622f",
-                                            color: " white",
-                                        }}
-                                    >
-                                        Show Idea
-                                    </Button>
-                                )}
-                            </WrapItem>
-                        </Wrap>
-                    </Box>
-                </Center>
-                {/* <Center >
-{
-        submit != false ?
-        
-         <Button   borderRadius={10}
-         type="submit"
-         variant="solid"
-         bgColor='#D5C39B'
-         color='#8d622f'
-         size="sm"  onClick={hide}>Close</Button>
-         :<Button  
-          borderRadius={10}
-         type="submit"
-         variant="solid"
-         bgColor='#D5C39B'
-         color='#8d622f'
-         size="sm" 
-         
-         onClick={Show}>Show Idea</Button>
-     }
-     </Center> */}
+                    {/* code writing area end */}
+                </Box>
             </Grid>
             <Footer></Footer>
         </>
