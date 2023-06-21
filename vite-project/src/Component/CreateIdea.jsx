@@ -100,16 +100,28 @@ export default function CreateIdea() {
                             </FormControl>
                             <FormControl>
                                 <InputGroup>
+
                                     <InputLeftElement
-                                        pointerEvents="none"
-                                        children={
-                                            <MdOutlineIntegrationInstructions color="#8d622f" />
-                                        }
+                                        
+                                            
+                                            children={
+
+                                                <MdOutlineIntegrationInstructions color="#8d622f" />
+                                            }
+                                            
+                                       
                                     />
-                                    <Textarea
+                                    
+                                    <Input
+                                    
+
+as={Textarea}
                                         type="text"
-                                        placeholder="    Instructions"
-                                        _placeholder={{ color: "#212D28" }}
+                                        placeholder='Instructions'
+                                        _placeholder={{ color: "#212D28",
+                                        
+                                    }}
+border='2px solid #D5C39B'
                                         focusBorderColor="#8d622f"
                                         isInvalid
                                         errorBorderColor="#D5C39B"
