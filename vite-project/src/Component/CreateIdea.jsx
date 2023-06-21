@@ -9,7 +9,9 @@ import {
     Textarea,
     InputGroup,
     InputLeftElement,
-} from "@chakra-ui/react";
+ 
+  } from "@chakra-ui/react";
+  import { useState } from "react";
 //   import { Link} from "react-router-dom";
 import { FcIdea } from "react-icons/fc";
 import { BiRename } from "react-icons/bi";
@@ -21,6 +23,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function CreateIdea() {
+
     const [name, setName] = useState("");
     const [instructions, setInstructions] = useState("");
     const [inputA, setInputA] = useState("");
@@ -224,4 +227,5 @@ export default function CreateIdea() {
             <Footer></Footer>
         </>
     );
+
 }
