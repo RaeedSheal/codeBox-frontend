@@ -2,8 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../Component/Footer";
+
+import { Image, Center, Button, Flex, Grid, Box } from "@chakra-ui/react";
+import { inView } from "framer-motion";
+
 import Navbarlogged from "../Component/Navbarlogged";
-import { Image, Center, Button, Flex } from "@chakra-ui/react";
 import Cookies from "universal-cookie";
 
 export default function Home() {
@@ -25,36 +28,49 @@ export default function Home() {
     return (
         <>
             <Navbarlogged></Navbarlogged>
-            <Flex h={"80vh"} bgColor="#fdfff0">
-                <Center>
-                    <Image
-                        src="../public/Box22.png "
-                        alt="Box"
-                        width="300"
-                        height="500"
-                    ></Image>
-                </Center>
+
+            <Flex
+                h={{ base: "69vh", md: "90vh" }}
+                bgColor="#fdfff0"
+                direction={"column"}
+            >
+                <Grid
+                    templateColumns={{ base: "1fr", md: "0.35fr 0.45fr" }}
+                    marginTop="5em"
+                >
+                    <Center bgColor="#fdfff0">
+                        <Image
+                            src="../public/close Box.png "
+                            alt="Box"
+                            width="200px"
+                            boxShadow={9}
+                        ></Image>
+                    </Center>
+                    <Center bgColor="#fdfff0">
+                        <Box bgColor="#fdfff0">
+                            <Image
+                                marginTop={2}
+                                src="../public/instructions.png "
+                                alt="instructions"
+                                width="500px"
+                                marginBottom={8}
+                            ></Image>
+                        </Box>
+                    </Center>
+                </Grid>
 
                 <Center>
-                    {submit != false ? (
-                        <Button onClick={hide}>Close</Button>
-                    ) : (
-                        <Button
-                            borderRadius={10}
-                            type="submit"
-                            variant="solid"
-                            bgColor="#D5C39B"
-                            color="#8d622f"
-                            size="sm"
-                            onClick={Show}
-                            _hover={{ bg: "#8d622f", color: " white" }}
-                        >
-                            Show Idea
-                        </Button>
-                    )}
+                    <Image
+                        src="../public/Button open.png "
+                        alt="Box"
+                        width="300px"
+                        // height="80"
+                        cursor="pointer"
+                        onClick={Show}
+                    ></Image>
                 </Center>
             </Flex>
-            <Footer></Footer>
+            <Footer />
         </>
     );
 }

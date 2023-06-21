@@ -15,10 +15,12 @@ import { FcIdea } from "react-icons/fc";
 import { BiRename } from "react-icons/bi";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { TbSquareLetterA, TbSquareLetterB } from "react-icons/tb";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import Footer from "../Component/Footer";
 import Navbaradmin from "../Component/Navbaradmin";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateIdea() {
     const [name, setName] = useState("");
@@ -27,6 +29,9 @@ export default function CreateIdea() {
     const [inputB, setInputB] = useState("");
     const [outputA, setOutputA] = useState("");
     const [outputB, setOutputB] = useState("");
+    const [hint, setHint] = useState("");
+    const navigate = useNavigate();
+
     // --- URL ---
     const url = "http://localhost:8000/api/createidea";
     // --- URL ---
@@ -41,12 +46,12 @@ export default function CreateIdea() {
                     inputB: inputB,
                     outputA: outputA,
                     outputB: outputB,
+                    hint: hint,
                 },
                 { withCredentials: true }
             )
             .then((res) => {
-                console.log(res);
-                console.log("User Signed up");
+                navigate("/ViewIdeas");
             });
     };
 
@@ -101,15 +106,17 @@ export default function CreateIdea() {
                             <FormControl>
                                 <InputGroup>
                                     <InputLeftElement
-                                        pointerEvents="none"
                                         children={
                                             <MdOutlineIntegrationInstructions color="#8d622f" />
                                         }
                                     />
-                                    <Textarea
+
+                                    <Input
+                                        as={Textarea}
                                         type="text"
-                                        placeholder="    Instructions"
+                                        placeholder="Instructions"
                                         _placeholder={{ color: "#212D28" }}
+                                        border="2px solid #D5C39B"
                                         focusBorderColor="#8d622f"
                                         isInvalid
                                         errorBorderColor="#D5C39B"
@@ -199,6 +206,27 @@ export default function CreateIdea() {
                                         errorBorderColor="#D5C39B"
                                         onChange={(e) =>
                                             setOutputB(e.target.value)
+                                        }
+                                    />
+                                </InputGroup>
+                            </FormControl>
+                            <FormControl>
+                                <InputGroup>
+                                    <InputLeftElement
+                                        pointerEvents="none"
+                                        children={
+                                            <AiOutlineExclamationCircle color="#8d622f" />
+                                        }
+                                    />
+                                    <Input
+                                        type="text"
+                                        placeholder="Hint"
+                                        _placeholder={{ color: "#212D28" }}
+                                        focusBorderColor="#8d622f"
+                                        isInvalid
+                                        errorBorderColor="#D5C39B"
+                                        onChange={(e) =>
+                                            setHint(e.target.value)
                                         }
                                     />
                                 </InputGroup>

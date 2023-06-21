@@ -34,7 +34,7 @@ export default function GitHubLink() {
                             width="full"
                             _hover={{ bg: "#8d622f", color: " white" }}
                         >
-                            Reema Abdulla
+                            Reema600
                         </Button>
                     </Link>
 
@@ -49,7 +49,7 @@ export default function GitHubLink() {
                             width="full"
                             _hover={{ bg: "#8d622f", color: " white" }}
                         >
-                            Raeed Sheal
+                            RaeedSheal
                         </Button>
                     </Link>
                 </ButtonGroup>
