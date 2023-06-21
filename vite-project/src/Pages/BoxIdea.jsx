@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbarlogged from "../Component/Navbarlogged";
 import {
     Image,
     Center,
@@ -64,7 +64,7 @@ export default function BoxIdea() {
     };
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbarlogged></Navbarlogged>
             <Grid
                 templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
                 bgColor="#fdfff0"

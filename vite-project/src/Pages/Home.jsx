@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbarlogged from "../Component/Navbarlogged";
 import { Image, Center, Button, Flex } from "@chakra-ui/react";
 import Cookies from "universal-cookie";
 
@@ -20,12 +20,11 @@ export default function Home() {
         navigate("/Box");
         setsubmit(true);
     };
-    // if (!cookie.get("access_token")) {
-    //     navigate("/");
-    // } else
+    if (!cookie.get("access_token")) window.location.href = "/";
+
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbarlogged></Navbarlogged>
             <Flex h={"80vh"} bgColor="#fdfff0">
                 <Center>
                     <Image

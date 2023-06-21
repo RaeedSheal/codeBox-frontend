@@ -31,6 +31,9 @@ export default function LoginAdmin() {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [flag, setFlag] = useState(false);
+    const [flag401, setFlag401] = useState(false);
+    const [authError, setAuthError] = useState("");
+
     const handleShowClick = () => setShowPassword(!showPassword);
     const Navigate = useNavigate();
     // - - - - - - URL - - - - -
@@ -67,6 +70,8 @@ export default function LoginAdmin() {
                     Navigate("/Home");
                 })
                 .catch((e) => {
+                    setAuthError("Information are incorrect");
+                    setFlag401(true);
                     console.log(e);
                 });
             // setLogin(true);
@@ -188,9 +193,20 @@ export default function LoginAdmin() {
                                         </Alert>
                                     )}
                                 </Box>
-                                <FormHelperText textAlign="right">
-                                    <Link>forgot password?</Link>
-                                </FormHelperText>
+                                <Box>
+                                    {flag401 && (
+                                        <Alert
+                                            bg="#fee8e7"
+                                            border={"1px"}
+                                            borderColor={"#f44336"}
+                                            borderRadius={"8px"}
+                                            my={1}
+                                        >
+                                            <AlertIcon color="#f44336" />
+                                            {authError}
+                                        </Alert>
+                                    )}
+                                </Box>
                             </FormControl>
                             <Button
                                 borderRadius={0}
