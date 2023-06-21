@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Component/Footer";
 import NavBar2 from "../Component/NavBar2";
 import { Image, Center, Button, Flex } from "@chakra-ui/react";
-// import Cookies from "js-cookie";
+import Cookies from "universal-cookie";
 
 export default function Home() {
     const [submit, setsubmit] = React.useState(false);
-
+    const cookie = new Cookies();
     const navigate = useNavigate();
     const hide = () => {
         console.log("user SignUp");
@@ -17,11 +17,12 @@ export default function Home() {
     };
     const Show = () => {
         // Cookies not finished yet
-        // console.log(Cookies.get("accesss_token"));
         navigate("/Box");
         setsubmit(true);
     };
-
+    // if (!cookie.get("access_token")) {
+    //     navigate("/");
+    // } else
     return (
         <>
             <NavBar2></NavBar2>
