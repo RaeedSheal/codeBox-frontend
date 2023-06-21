@@ -1,30 +1,21 @@
 import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Component/NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 // import { useNavigate } from 'react-router-dom'
-export default function NavBar2() {
+export default function Navbarlogged() {
     const navRef = useRef();
+    const navigate = useNavigate();
+    const cookie = new Cookies();
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
     };
-
-    // const [nav , setNav] = useState(false)
-
-    // const navigate = useNavigate()
-    // 	const SignIn = ()=>{
-    // 		console.log("user SignUp");
-    // 		navigate("/home")
-    // 		setNav("")
-
-    // 	}
-    // 	const LogOut = ()=>{
-    // 		console.log("user LogOut");
-    // 		navigate("/")
-    // 		setNav(true)
-
-    // 	}
+    const Logout = () => {
+        cookie.remove("access_token");
+        navigate("/");
+    };
     return (
         <div>
             <header>
@@ -38,8 +29,8 @@ export default function NavBar2() {
                 </Link>
 
                 <nav ref={navRef}>
-                    <a href="/SignUp2">Sign up</a>
-                    <a href="/Login">Log in</a>
+                    <a href="/Home">Home</a>
+                    <a onClick={() => Logout()}>Log out</a>
                     <button
                         className="nav-btn nav-close-btn"
                         onClick={showNavbar}

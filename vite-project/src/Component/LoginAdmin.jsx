@@ -9,7 +9,6 @@ import {
     InputLeftElement,
     chakra,
     Box,
-    Avatar,
     FormControl,
     FormHelperText,
     InputRightElement,
@@ -17,6 +16,7 @@ import {
     AlertIcon,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
+import { RiAdminLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Component/Footer";
 import NavBar2 from "../Component/NavBar2";
@@ -24,34 +24,29 @@ import axios from "axios";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
-
-// Components
-export default function Login() {
+export default function LoginAdmin() {
     const [showPassword, setShowPassword] = useState(false);
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [authError, setAuthError] = useState("");
-
     const [flag, setFlag] = useState(false);
     const [flag401, setFlag401] = useState(false);
+    const [authError, setAuthError] = useState("");
 
-    // const [login, setLogin] = useState(localStorage.getItem("loged") === "true");
     const handleShowClick = () => setShowPassword(!showPassword);
     const Navigate = useNavigate();
-    // const url = "https://codebox-0856.onrender.com/api/loginuser";
-    const url = "http://localhost:8000/api/loginuser";
-
+    // - - - - - - URL - - - - -
+    const url = "http://localhost:8000/api/loginadmin";
+    // - - - - - - URL - - - - -
     function handleFormSubmit() {
         setEmailError("");
         setPasswordError("");
         setFlag(false);
-        setAuthError("");
 
         let hasError = true;
-        if (email.length < 4) {
-            setEmailError("Email should be at least 4 characters");
+        if (username.length < 4) {
+            setEmailError("Username should be at least 4 characters");
             hasError = false;
         }
 
@@ -65,28 +60,27 @@ export default function Login() {
                 .post(
                     url,
                     {
-                        email: email,
+                        username: username,
                         password: password,
                     },
                     { withCredentials: true }
                 )
                 .then((res) => {
                     console.log(res);
-                    Navigate("/Home");
+                    Navigate("/ViewIdeas");
                 })
                 .catch((e) => {
-                    console.log(e);
                     setAuthError("Information are incorrect");
                     setFlag401(true);
+                    console.log(e);
                 });
             // setLogin(true);
         } else {
             setFlag(true);
         }
     }
-
     return (
-        <div>
+        <>
             <NavBar2></NavBar2>
             <Flex
                 flexDirection="column"
@@ -104,8 +98,8 @@ export default function Login() {
                     alignItems="center"
                     // color='primary.800'
                 >
-                    <Avatar bg="#D5C39B" />
-                    <Heading color="#8d622f">Welcome</Heading>
+                    <RiAdminLine bg="#D5C39B" size="50px" />
+                    <Heading color="#8d622f">Login Admin</Heading>
                     <Box minW={{ base: "90%", md: "468px" }}>
                         <Stack
                             spacing={4}
@@ -130,7 +124,7 @@ export default function Login() {
                                         isInvalid
                                         errorBorderColor="#D5C39B"
                                         onChange={(e) =>
-                                            setEmail(e.target.value)
+                                            setUsername(e.target.value)
                                         }
                                     />
                                 </InputGroup>
@@ -213,11 +207,6 @@ export default function Login() {
                                         </Alert>
                                     )}
                                 </Box>
-                                <FormHelperText textAlign="right">
-                                    <Link to="/ResetPassword">
-                                        forgot password?
-                                    </Link>
-                                </FormHelperText>
                             </FormControl>
                             <Button
                                 borderRadius={0}
@@ -238,14 +227,8 @@ export default function Login() {
                         </Stack>
                     </Box>
                 </Stack>
-                <Box color="#212D28">
-                    New to us?{" "}
-                    <Link to="/SignUp2" color="teal.500" href="#">
-                        Sign Up
-                    </Link>
-                </Box>
             </Flex>
             <Footer></Footer>
-        </div>
+        </>
     );
 }

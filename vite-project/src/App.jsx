@@ -6,6 +6,12 @@ import SingnUp2 from "./Component/SingnUp2";
 import Home from "./Pages/Home";
 import BoxIdea from "./Pages/BoxIdea";
 import ResetPassword from "./Component/ResetPassword";
+import CreateIdea from "./Component/CreateIdea";
+import LoginAdmin from "./Component/LoginAdmin";
+import GitHubLink from "./Component/gitHubLink";
+import EditIdea from "./Component/EditIdea";
+import ViewIdeas from "./Component/ViewIdeas";
+import ViewUsers from "./Component/ViewUsers";
 function App() {
     return (
         <>
@@ -19,6 +25,12 @@ function App() {
                     path="/ResetPassword"
                     element={<ResetPassword />}
                 ></Route>
+                <Route path="/LoginAdmin" element={<LoginAdmin />}></Route>
+                <Route path="/CreateIdea" element={<CreateIdea />}></Route>
+                <Route path="/EditIdea/:id" element={<EditIdea />}></Route>
+                <Route path="/ViewIdeas" element={<ViewIdeas />}></Route>
+                <Route path="/ViewUsers" element={<ViewUsers />}></Route>
+                <Route path="/gitHubLink" element={<GitHubLink />}></Route>
             </Routes>
         </>
     );
