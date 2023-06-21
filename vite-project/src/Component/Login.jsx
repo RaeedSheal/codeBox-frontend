@@ -46,15 +46,13 @@ export default function Login() {
         setFlag(false);
 
         let hasError = true;
-        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i.test(email)) {
-            setEmailError("Email should be correct format");
+        if (email.length < 4) {
+            setEmailError("Email should be at least 4 characters");
             hasError = false;
         }
 
-        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/i.test(password)) {
-            setPasswordError(
-                "Password should be at least 8 characters 1 uppercase 1 lowercase and at least 1 number"
-            );
+        if (password.length < 4) {
+            setPasswordError("Password should be at least 4 characters");
             hasError = false;
         }
 
