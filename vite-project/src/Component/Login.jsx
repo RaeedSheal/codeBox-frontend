@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
     Flex,
@@ -33,7 +32,11 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [authError, setAuthError] = useState("");
+
     const [flag, setFlag] = useState(false);
+    const [flag401, setFlag401] = useState(false);
+
     // const [login, setLogin] = useState(localStorage.getItem("loged") === "true");
     const handleShowClick = () => setShowPassword(!showPassword);
     const Navigate = useNavigate();
@@ -44,6 +47,7 @@ export default function Login() {
         setEmailError("");
         setPasswordError("");
         setFlag(false);
+        setAuthError("");
 
         let hasError = true;
         if (email.length < 4) {
@@ -72,6 +76,8 @@ export default function Login() {
                 })
                 .catch((e) => {
                     console.log(e);
+                    setAuthError("Information are incorrect");
+                    setFlag401(true);
                 });
             // setLogin(true);
         } else {
@@ -190,6 +196,20 @@ export default function Login() {
                                         >
                                             <AlertIcon color="#f44336" />
                                             {passwordError}
+                                        </Alert>
+                                    )}
+                                </Box>
+                                <Box>
+                                    {flag401 && (
+                                        <Alert
+                                            bg="#fee8e7"
+                                            border={"1px"}
+                                            borderColor={"#f44336"}
+                                            borderRadius={"8px"}
+                                            my={1}
+                                        >
+                                            <AlertIcon color="#f44336" />
+                                            {authError}
                                         </Alert>
                                     )}
                                 </Box>

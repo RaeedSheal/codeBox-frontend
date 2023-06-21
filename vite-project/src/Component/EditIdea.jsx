@@ -16,7 +16,7 @@ import { BiRename } from "react-icons/bi";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { TbSquareLetterA, TbSquareLetterB } from "react-icons/tb";
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbaradmin from "../Component/Navbaradmin";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -75,7 +75,7 @@ export default function EditIdea() {
 
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbaradmin></Navbaradmin>
             <Flex
                 flexDirection="column"
                 width="100wh"

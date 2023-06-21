@@ -38,7 +38,11 @@ export default function SingnUp2() {
     const [userNameError, setUserNameError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [flag, setFlag] = useState(false);
+    const [flagName, setFlagName] = useState(false);
+    const [flagUsername, setFlagUsername] = useState(false);
+    const [flagPassword, setFlagPassword] = useState(false);
+    const [flagEmail, setFlagEmail] = useState(false);
+
     const [login, setLogin] = useState(
         localStorage.getItem("loged") === "true"
     );
@@ -52,21 +56,23 @@ export default function SingnUp2() {
         setUserNameError("");
         setEmailError("");
         setPasswordError("");
-        setFlag(false);
 
         let hasError = true;
 
         if (name.length < 3) {
             setNameError("Name should be at least 3 characters");
+            setFlagName(true);
             hasError = true;
         }
         if (userName.length < 3) {
             setUserNameError("Name should be at least 3 characters");
+            setFlagUsername(true);
             hasError = true;
         }
 
         if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i.test(email)) {
             setEmailError("Email should be correct format");
+            setFlagEmail(true);
             hasError = false;
         }
 
@@ -74,6 +80,7 @@ export default function SingnUp2() {
             setPasswordError(
                 "Password should be at least 8 characters 1 uppercase 1 lowercase and at least 1 number"
             );
+            setFlagPassword(true);
             hasError = false;
         }
 
@@ -87,8 +94,6 @@ export default function SingnUp2() {
             console.log("User Signed up");
             setLogin(true);
             Navigate("/Login");
-        } else {
-            setFlag(true);
         }
     }
     return (
@@ -137,7 +142,7 @@ export default function SingnUp2() {
                                         />
                                     </InputGroup>
                                     <Box>
-                                        {flag && (
+                                        {flagName && (
                                             <Alert
                                                 bg="#fee8e7"
                                                 border={"1px"}
@@ -173,7 +178,7 @@ export default function SingnUp2() {
                                     </InputGroup>
                                     <Box>
                                         {" "}
-                                        {flag && (
+                                        {flagUsername && (
                                             <Alert
                                                 bg="#fee8e7"
                                                 border={"1px"}
@@ -208,7 +213,7 @@ export default function SingnUp2() {
                                         />
                                     </InputGroup>
                                     <Box>
-                                        {flag && (
+                                        {flagEmail && (
                                             <Alert
                                                 bg="#fee8e7"
                                                 border={"1px"}
@@ -269,7 +274,7 @@ export default function SingnUp2() {
                 </FormHelperText> */}
                                 </FormControl>
                                 <Box>
-                                    {flag && (
+                                    {flagPassword && (
                                         <Alert
                                             bg="#fee8e7"
                                             border={"1px"}

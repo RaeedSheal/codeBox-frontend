@@ -16,7 +16,7 @@ import { BiRename } from "react-icons/bi";
 import { MdOutlineIntegrationInstructions } from "react-icons/md";
 import { TbSquareLetterA, TbSquareLetterB } from "react-icons/tb";
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbaradmin from "../Component/Navbaradmin";
 import { useState } from "react";
 import axios from "axios";
 
@@ -52,7 +52,7 @@ export default function CreateIdea() {
 
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbaradmin></Navbaradmin>
             <Flex
                 flexDirection="column"
                 width="100wh"

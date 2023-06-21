@@ -1,8 +1,7 @@
 import { Heading, Stack, Center, Grid } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import { FcIdea } from "react-icons/fc";
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+import Navbaradmin from "../Component/Navbaradmin";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cardidea from "./Cardidea";
@@ -18,7 +17,7 @@ export default function ViewIdeas() {
     }, []);
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbaradmin></Navbaradmin>
             <Center paddingTop="20px" bgColor="#fdfff0">
                 <Heading color="#8d622f">All Idea </Heading>
                 <FcIdea bg="#D5C39B" size="50px" />

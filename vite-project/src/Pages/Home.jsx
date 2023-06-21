@@ -2,10 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import Footer from "../Component/Footer";
-import NavBar2 from "../Component/NavBar2";
+
 import { Image, Center, Button, Flex, Grid, Box,} from "@chakra-ui/react";
 import { inView } from "framer-motion";
-// import Cookies from "universal-cookie";
+
+import Navbarlogged from "../Component/Navbarlogged";
+import Cookies from "universal-cookie";
+
 
 export default function Home() {
     const [submit, setsubmit] = React.useState(false);
@@ -21,15 +24,16 @@ export default function Home() {
         navigate("/Box");
         setsubmit(true);
     };
-    // if (!cookie.get("access_token")) {
-    //     navigate("/");
-    // } else
+    if (!cookie.get("access_token")) window.location.href = "/";
+
     return (
         <>
-            <NavBar2></NavBar2>
+            <Navbarlogged></Navbarlogged>
+
             <Flex h={{base:'69vh',md:'90vh'}} bgColor="#fdfff0" direction={'column'}>
                 <Grid templateColumns={{ base: "1fr", md: "0.35fr 0.45fr" }} marginTop='5em'>
                 <Center bgColor="#fdfff0">
+
                     <Image
                         src="../public/close Box.png "
                         alt="Box"
